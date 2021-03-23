@@ -1,0 +1,6 @@
+.ind_header {
+  color: black;
+}
+.ind_header:hover {
+  text-decoration: none;
+}
