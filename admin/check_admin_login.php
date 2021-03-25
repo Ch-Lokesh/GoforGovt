@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 include("../config/configure.php");
+session_start();
 if (isset($_POST['user_sign_in'])) {
 
     $user_email = htmlentities(mysqli_real_escape_string($con, $_POST['user_email']));

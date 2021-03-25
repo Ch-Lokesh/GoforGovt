@@ -13,6 +13,7 @@ if (isset($_POST['user_sign_in'])) {
     $check_user = mysqli_num_rows($query);
 
     if ($check_user == 1) {
+
         $_SESSION['email'] = $user_email;
         echo "<script>window.open('user_home.php', '_self')</script>";
     } else {
