@@ -27,7 +27,7 @@
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">Middle Name</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="middle_name" class="form-control" required>
+                    <input type="text" id="firstName" name="middle_name" class="form-control">
                 </div>
             </div>
 
@@ -62,14 +62,14 @@
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">Gmail</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="user_email" class="form-control" required>
+                    <input type="email" id="firstName" name="user_email" class="form-control" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">Confirm Gmail</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="user_email1" class="form-control" required>
+                    <input type="email" id="firstName" name="user_email1" class="form-control" required>
                 </div>
             </div>
 
@@ -97,21 +97,21 @@
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">Bidata</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="biodate" class="form-control" required>
+                    <input type="text" id="firstName" name="biodata" class="form-control" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="user_pass" class="form-control" required>
+                    <input type="password" id="firstName" name="user_pass" class="form-control" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">Confirm Password</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="user_pass1" class="form-control" required>
+                    <input type="password" id="firstName" name="user_pass1" class="form-control" required>
                 </div>
             </div>
 
