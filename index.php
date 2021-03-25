@@ -54,6 +54,32 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card col-sm-4 text-center">
+                <div class="card-header">
+                    Sign Up
+                </div>
+                <div class="card-body">
+                    <p class="text-center">
+                        as
+                    </p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3 one inline">
+                                <img src="images/user.png" alt="user" style="max-width:100px; max-height:100%">
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-8 two inline">
+                                <div class="content" id="signupUser">
+                                    <a href="admin/admin_register.php">
+                                        <div class="mid">Admin</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

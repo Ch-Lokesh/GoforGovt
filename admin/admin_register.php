@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>Admin Registration</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
     <link rel="stylesheet" type="text/css" href="../styles/user_reg.css">
@@ -12,11 +12,11 @@
 
 
 <body style="background-image: url('../images/MegaTron.jpg')">
-
+    <a href="../index.php">HOME </a>
 
     <div class="container-fluid reg-form">
         <form action="" method="post" enctype="multipart/form" role="form" class="form-horizontal">
-            <h2>Register as User</h2>
+            <h2>Register as Admin</h2>
             <div class="form-group row">
                 <label for="firstName" class="col-sm-4 control-label">First Name</label>
                 <div class="col-sm-8">
@@ -95,9 +95,9 @@
             </div>
 
             <div class="form-group row">
-                <label for="firstName" class="col-sm-4 control-label">Bidata</label>
+                <label for="firstName" class="col-sm-4 control-label">8 digit Pass Phrase</label>
                 <div class="col-sm-8">
-                    <input type="text" id="firstName" name="biodata" class="form-control" required>
+                    <input type="password" id="firstName" name="pass_phrase" class="form-control" required>
                 </div>
             </div>
 
@@ -116,10 +116,10 @@
             </div>
 
             <center><button type="submit" class="btn btn-primary btn-block" name="user_sign_up">Register</button></center>
-            <?php include("insert_new_user.php"); ?>
+            <?php include("insert_new_admin.php"); ?>
         </form>
 
-        <p>Aleardy have an account <a href="user_login.php">Click Here</a></p>
+        <p>Aleardy have an Admin account <a href="admin_login.php">Click Here</a></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -13,7 +13,6 @@ if (isset($_POST['user_sign_up'])) {
     $user_birthday = htmlentities(mysqli_real_escape_string($con, $_POST['user_birthday']));
     $user_phone = htmlentities(mysqli_real_escape_string($con, $_POST['user_phone']));
     $user_phone1 = htmlentities(mysqli_real_escape_string($con, $_POST['user_phone1']));
-    $biodata = htmlentities(mysqli_real_escape_string($con, $_POST['biodata']));
     $user_pass = htmlentities(mysqli_real_escape_string($con, $_POST['user_pass']));
     $user_pass1 = htmlentities(mysqli_real_escape_string($con, $_POST['user_pass1']));
     // $age = 80;
@@ -40,7 +39,7 @@ if (isset($_POST['user_sign_up'])) {
         echo "<script>alert('Password did not match')</script>";
     }
 
-    $check_email = "select * from users where email = '$user_email'";
+    $check_email = "select * from users where email = '$user_email' AND user_type='admin'";
     $run_check_email = mysqli_query($con, $check_email);
     $rows = mysqli_num_rows($run_check_email);
     if ($rows > 0) {
@@ -48,8 +47,8 @@ if (isset($_POST['user_sign_up'])) {
         exit();
     }
 
-    $insert = "insert into users (first_name, middle_name, last_name, city, state, zipcode, email, dob, biodata, password, age)
-    values('$first_name', '$middle_name', '$last_name', '$city', '$state', '$zipcode', '$user_email', '$user_birthday', '$biodata', '$user_pass', $age) ";
+    $insert = "insert into users (first_name, middle_name, last_name, city, state, zipcode, email, dob, biodata, user_type, password, age)
+    values('$first_name', '$middle_name', '$last_name', '$city', '$state', '$zipcode', '$user_email', '$user_birthday', 'amdin','admin', '$user_pass', $age) ";
 
     $insert_query = mysqli_query($con, $insert);
     if ($insert_query) {
