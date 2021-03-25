@@ -118,6 +118,8 @@
             <center><button type="submit" class="btn btn-primary btn-block" name="user_sign_up">Register</button></center>
             <?php include("insert_new_student.php"); ?>
         </form>
+
+        <p>Aleardy have an account <a href="user_login.php">Click Here</a></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
