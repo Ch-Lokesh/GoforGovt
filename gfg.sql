@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 11:57 AM
+-- Generation Time: Mar 25, 2021 at 07:55 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,46 @@ SET time_zone = "+00:00";
 --
 -- Database: `gfg`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `descq`
+--
+
+CREATE TABLE `descq` (
+  `q_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `creator_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `descq`
+--
+
+INSERT INTO `descq` (`q_id`, `question`, `answer`, `creator_id`) VALUES
+(4, 'daf', 'dfa', 13),
+(5, 'goegraph question', 'goegraphy answer', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `q_id` int(11) NOT NULL,
+  `q_type` varchar(20) NOT NULL,
+  `tag` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`q_id`, `q_type`, `tag`) VALUES
+(5, 'descq', 'Geography');
 
 -- --------------------------------------------------------
 
@@ -56,6 +96,12 @@ INSERT INTO `users` (`user_id`, `first_name`, `middle_name`, `last_name`, `city`
 --
 
 --
+-- Indexes for table `descq`
+--
+ALTER TABLE `descq`
+  ADD PRIMARY KEY (`q_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -64,6 +110,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `descq`
+--
+ALTER TABLE `descq`
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
