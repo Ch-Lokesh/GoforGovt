@@ -163,6 +163,50 @@ if (isset($_POST['sub_des_answer'])) {
         $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Maths')";
         $query = mysqli_query($con, $insert);
     }
+    if ($Physics) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Physics')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($History) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'History')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($English) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'English')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($Economy) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Economy')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($Culture) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Culture')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($Current_Affairs) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Current_Affairs')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($General_Science) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'General_Science')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($Literature) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Literature')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($PrevYearQuestion) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'PrevYearQuestion')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($Reasoning) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Reasoning')";
+        $query = mysqli_query($con, $insert);
+    }
+    if ($Aptitude) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Aptitude')";
+        $query = mysqli_query($con, $insert);
+    }
 }
 
 ?>
