@@ -36,90 +36,117 @@
             <div class="form-group row">
                 <label for="labels" style="margin-left:10px;">Please Select Labels</label>
 
+                <!-- <input type="checkbox" name="check_list[]" value="Geography"><label>Geography</label>
+                <input type="checkbox" name="check_list[]" value="Maths"><label>Maths</label>
+                <input type="checkbox" name="check_list[]" value="Physics"><label>Physics</label>
+                <input type="checkbox" name="check_list[]" value="History"><label>History</label>
+                <input type="checkbox" name="check_list[]" value="English"><label>English</label>
+                <input type="checkbox" name="check_list[]" value="Economy"><label>Economy</label>
+                <input type="checkbox" name="check_list[]" value="Culture"><label>Culture</label>
+                <input type="checkbox" name="check_list[]" value="Current_Affairs"><label>Current_Affairs</label>
+                <input type="checkbox" name="check_list[]" value="General_Science"><label>General_Science</label>
+                <input type="checkbox" name="check_list[]" value="Literature"><label>Literature</label>
+                <input type="checkbox" name="check_list[]" value="PrevYearQuestion"><label>PrevYearQuestion</label>
+                <input type="checkbox" name="check_list[]" value="Reasoning"><label>Reasoning</label>
+                <input type="checkbox" name="check_list[]" value="Aptitude"><label>Aptitude</label> -->
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-2 tag" id="Geography">
-                            <div class="box">Geography</div>
+                            <!-- <div class="box">Geography</div> -->
+                            <input type="checkbox" name="check_list[]" value="Geography"><label>Geography</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Maths">
-                            <div class="box">Maths</div>
+                            <!-- <div class="box">Maths</div> -->
+                            <input type="checkbox" name="check_list[]" value="Maths"><label>Maths</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Physics">
-                            <div class="box">Physics</div>
+                            <!-- <div class="box">Physics</div> -->
+                            <input type="checkbox" name="check_list[]" value="Physics"><label>Physics</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="History">
-                            <div class="box">History</div>
+                            <!-- <div class="box">History</div> -->
+                            <input type="checkbox" name="check_list[]" value="History"><label>History</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-2 tag" id="English">
-                            <div class="box">English</div>
+                            <!-- <div class="box">English</div> -->
+                            <input type="checkbox" name="check_list[]" value="English"><label>English</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Economy">
-                            <div class="box">Economy</div>
+                            <!-- <div class="box">Economy</div> -->
+                            <input type="checkbox" name="check_list[]" value="Economy"><label>Economy</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Culture">
-                            <div class="box">Culture</div>
+                            <!-- <div class="box">Culture</div> -->
+                            <input type="checkbox" name="check_list[]" value="Culture"><label>Culture</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Current Affairs">
-                            <div class="box">Current Affairs</div>
+                            <!--  <div class="box">Current Affairs</div> -->
+                            <input type="checkbox" name="check_list[]" value="Current_Affairs"><label>Current_Affairs</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-2 tag" id="General Science">
-                            <div class="box">General Science</div>
+                            <!-- <div class="box">General Science</div> -->
+                            <input type="checkbox" name="check_list[]" value="General_Science"><label>General_Science</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Literature">
-                            <div class="box">Literature</div>
+                            <!-- <div class="box">Literature</div> -->
+                            <input type="checkbox" name="check_list[]" value="Literature"><label>Literature</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="PrevYearQuestion">
-                            <div class="box">PrevYearQuestion</div>
+                            <!-- <div class="box">PrevYearQuestion</div> -->
+                            <input type="checkbox" name="check_list[]" value="PrevYearQuestion"><label>PrevYearQuestion</label>
                         </div>
 
                         <div class="col-sm-1"></div>
 
                         <div class="col-sm-2 tag" id="Reasoning">
-                            <div class="box">Reasoning</div>
+                            <!-- <div class="box">Reasoning</div> -->
+                            <input type="checkbox" name="check_list[]" value="Reasoning"><label>Reasoning</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-2 tag" id="Aptitude">
-                            <div class="box">Aptitude</div>
+                            <!-- <div class="box">Aptitude</div> -->
+                            <input type="checkbox" name="check_list[]" value="Aptitude"><label>Aptitude</label>
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
                 </div>
             </div>
 
-            <?php include("tags.php"); ?>
+
 
             <center><button type="submit" class="btn btn-primary btn-block" name="sub_des_answer">Save Question & Answer</button></center>
         </form>
@@ -155,58 +182,77 @@ if (isset($_POST['sub_des_answer'])) {
     $row = mysqli_fetch_array($query);
     $q_id = $row[0];
 
-    if ($Geography) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Geography')";
+    foreach ($_POST['check_list'] as $selected) {
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', '$selected')";
         $query = mysqli_query($con, $insert);
     }
-    if ($Maths) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Maths')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Physics) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Physics')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($History) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'History')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($English) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'English')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Economy) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Economy')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Culture) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Culture')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Current_Affairs) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Current_Affairs')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($General_Science) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'General_Science')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Literature) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Literature')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($PrevYearQuestion) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'PrevYearQuestion')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Reasoning) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Reasoning')";
-        $query = mysqli_query($con, $insert);
-    }
-    if ($Aptitude) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Aptitude')";
-        $query = mysqli_query($con, $insert);
-    }
+
+    // $abc = "<script>document.getElementByID("Geography").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Geography')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Maths").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Maths')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Physics").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Physics')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("History").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'History')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("English").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'English')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Economy").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Economy')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Culture").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Culture')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Current_Affairs").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Current_Affairs')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("General_Science").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'General_Science')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Literature").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Literature')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("PrevYearQuestion").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'PrevYearQuestion')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Reasoning").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Reasoning')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+    // $abc = "<script>document.getElementByID("Aptitude").value</script>";
+    // if ($abc == 1) {
+    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Aptitude')";
+    //     $query = mysqli_query($con, $insert);
+    // }
+
 }
 
 ?>

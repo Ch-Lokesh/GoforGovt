@@ -15,13 +15,16 @@ $Aptitude = 0;
 ?>
 <script>
     document.getElementById("Geography").onclick = function() {
-        <?php if ($Geography == 1) {
-            $Geography = 0;
-        } else $Geography = 1  ?>
-        if (document.getElementById("Geography").style.backgroundColor != "green")
+
+        if (document.getElementById("Geography").style.backgroundColor != "green") {
             document.getElementById("Geography").style.backgroundColor = "green";
-        else
+            $Geography = 1;
+        } else {
             document.getElementById("Geography").style.backgroundColor = "";
+            $Geography = 0;
+        }
+
+
     }
     document.getElementById("Maths").onclick = function() {
         <?php if ($Maths == 1) {

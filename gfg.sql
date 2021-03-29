@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 07:55 PM
+-- Generation Time: Mar 29, 2021 at 07:22 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -40,7 +40,44 @@ CREATE TABLE `descq` (
 
 INSERT INTO `descq` (`q_id`, `question`, `answer`, `creator_id`) VALUES
 (4, 'daf', 'dfa', 13),
-(5, 'goegraph question', 'goegraphy answer', 13);
+(5, 'goegraph question', 'goegraphy answer', 13),
+(6, 'All tags question', 'All tags Answer', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mcq`
+--
+
+CREATE TABLE `mcq` (
+  `q_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `option_1` text NOT NULL,
+  `option_2` text NOT NULL,
+  `option_3` text NOT NULL,
+  `option_4` text NOT NULL,
+  `answer` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mcq`
+--
+
+INSERT INTO `mcq` (`q_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `creator_id`) VALUES
+(1, 'mcq all tags question', 'option 1', 'option 2', 'option 3', 'option 4', 1, 13),
+(2, 'mcq question 2', '1', '2', '3', '4', 2, 13),
+(3, 'all tags mcq 2', 'op 1', 'op 2', 'op 3', 'op 4', 2, 13),
+(4, 'no tags', 'op1', 'op2', 'op3', 'op4', 4, 13),
+(5, 'quesion 1', '1', '23', '3', '4', 4, 13),
+(6, 'geography', '1', '2', '3', '4', 1, 13),
+(7, 'quion2', '1', '1', '1', '1', 1, 13),
+(8, 'df', '1', '2', '2', '2', 1, 13),
+(9, 'da', '1', '1', '1', '1', 1, 13),
+(10, '1', '1', '1', '1', '1', 1, 13),
+(11, '1', '1', '1', '1', '1', 1, 13),
+(12, 'mcq Question', 'option 1', 'option 2', 'option 3', 'option 4', 2, 13),
+(13, 'Is True = True', 'True', 'False', '', '', 1, 13);
 
 -- --------------------------------------------------------
 
@@ -59,7 +96,27 @@ CREATE TABLE `tags` (
 --
 
 INSERT INTO `tags` (`q_id`, `q_type`, `tag`) VALUES
-(5, 'descq', 'Geography');
+(12, 'mcq', 'Geography'),
+(12, 'mcq', 'Maths'),
+(12, 'mcq', 'Physics'),
+(12, 'mcq', 'History'),
+(13, 'mcq', 'General_Science'),
+(13, 'mcq', 'Literature'),
+(13, 'mcq', 'PrevYearQuestion'),
+(13, 'mcq', 'Reasoning'),
+(13, 'mcq', 'Aptitude');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `updates`
+--
+
+CREATE TABLE `updates` (
+  `description` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `creator_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -102,6 +159,18 @@ ALTER TABLE `descq`
   ADD PRIMARY KEY (`q_id`);
 
 --
+-- Indexes for table `mcq`
+--
+ALTER TABLE `mcq`
+  ADD PRIMARY KEY (`q_id`);
+
+--
+-- Indexes for table `updates`
+--
+ALTER TABLE `updates`
+  ADD PRIMARY KEY (`description`,`time`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -115,7 +184,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `descq`
 --
 ALTER TABLE `descq`
-  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `mcq`
+--
+ALTER TABLE `mcq`
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`

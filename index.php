@@ -9,6 +9,22 @@
     <link rel="stylesheet" type="text/css" href="styles/index.css">
 </head>
 
+<style>
+    .mid {
+        padding-top: 20px;
+        font-size: 20px;
+    }
+
+
+    .down_margin {
+        margin: 10px;
+    }
+
+    .margin_bottom {
+        margin-bottom: 10px;
+    }
+</style>
+
 <body>
     <div class="container-fluid" style="margin-top:10px">
         <div class="row">
@@ -26,27 +42,46 @@
     </div>
 
     <div class="container-fluid">
+
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-1">
             </div>
+
             <div class="card col-sm-4 text-center">
                 <div class="card-header">
-                    Sign Up
+                    <strong>Sign Up</strong>
                 </div>
                 <div class="card-body">
-                    <p class="text-center">
-                        as
-                    </p>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-sm-3 one inline">
-                                <img src="images/user.png" alt="user" style="max-width:100px; max-height:100%">
+                            <div class="col-sm-12">
+                                AS
                             </div>
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-8 two inline">
-                                <div class="content" id="signupUser">
+                            <hr>
+                        </div>
+                        <div class="row" style="margin-bottom:20px;">
+                            <div class="col-sm-3 one inline">
+                                <img src="images/user.png" alt="user" width="120px" height="100px">
+                            </div>
+
+                            <div class="col-sm-9 two text-center">
+                                <div class="content text-center" id="signupUser">
                                     <a href="user/registration.php">
-                                        <div class="mid">User</div>
+                                        <div class="mid text-center">User</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-sm-3 one inline">
+                                <img src="images/admin.png" alt="admin" width="100px" height="100px">
+                            </div>
+
+                            <div class="col-sm-9 two text-center">
+                                <div class="content text-center" id="signupUser">
+                                    <a href="admin/admin_register.php">
+                                        <div class="mid text-center">Admin</div>
                                     </a>
                                 </div>
                             </div>
@@ -55,31 +90,54 @@
                 </div>
             </div>
 
+            <div class="col-sm-1">
+            </div>
+
             <div class="card col-sm-4 text-center">
                 <div class="card-header">
-                    Sign Up
+                    <strong>Sign In</strong>
                 </div>
                 <div class="card-body">
-                    <p class="text-center">
-                        as
-                    </p>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-sm-3 one inline">
-                                <img src="images/user.png" alt="user" style="max-width:100px; max-height:100%">
+                            <div class="col-sm-12">
+                                AS
                             </div>
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-8 two inline">
-                                <div class="content" id="signupUser">
-                                    <a href="admin/admin_register.php">
-                                        <div class="mid">Admin</div>
+                            <hr>
+                        </div>
+                        <div class="row " style="margin-bottom:20px;">
+                            <div class="col-sm-3 one inline">
+                                <img src="images/user.png" alt="user" width="120px" height="100px">
+                            </div>
+
+                            <div class="col-sm-9 two text-center">
+                                <div class="content text-center" id="signupUser">
+                                    <a href="user/user_login.php">
+                                        <div class="mid text-center">User</div>
                                     </a>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 one inline">
+                                <img src="images/admin.png" alt="admin" width="100px" height="100px">
+                            </div>
+
+                            <div class="col-sm-9 two text-center">
+                                <div class="content text-center" id="signupUser">
+                                    <a href="admin/admin_login.php">
+                                        <div class="mid text-center">Admin</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

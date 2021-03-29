@@ -10,6 +10,10 @@
 }
 
 .tag:hover {
-  background-color: aqua;
+  /* background-color: aqua; */
   box-shadow: 5px 5px 10px violet;
+}
+
+label {
+  margin-right: 5px;
 }
