@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2021 at 07:22 AM
+-- Generation Time: Mar 29, 2021 at 04:08 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,53 @@ SET time_zone = "+00:00";
 --
 -- Database: `gfg`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `articles`
+--
+
+CREATE TABLE `articles` (
+  `art_id` int(11) NOT NULL,
+  `header` text NOT NULL,
+  `content` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `creator_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`art_id`, `header`, `content`, `time`, `creator_id`) VALUES
+(1, 'New article header', 'New article content', '2021-03-29 10:51:59', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `user_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `comment_on` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `completed`
+--
+
+CREATE TABLE `completed` (
+  `user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,6 +89,31 @@ INSERT INTO `descq` (`q_id`, `question`, `answer`, `creator_id`) VALUES
 (4, 'daf', 'dfa', 13),
 (5, 'goegraph question', 'goegraphy answer', 13),
 (6, 'All tags question', 'All tags Answer', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `fb_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `feedback` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `liked`
+--
+
+CREATE TABLE `liked` (
+  `user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -82,6 +154,17 @@ INSERT INTO `mcq` (`q_id`, `question`, `option_1`, `option_2`, `option_3`, `opti
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `phone`
+--
+
+CREATE TABLE `phone` (
+  `user_id` int(11) NOT NULL,
+  `number` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tags`
 --
 
@@ -104,7 +187,22 @@ INSERT INTO `tags` (`q_id`, `q_type`, `tag`) VALUES
 (13, 'mcq', 'Literature'),
 (13, 'mcq', 'PrevYearQuestion'),
 (13, 'mcq', 'Reasoning'),
-(13, 'mcq', 'Aptitude');
+(13, 'mcq', 'Aptitude'),
+(1, 'art', 'Geography'),
+(1, 'art', 'Maths'),
+(1, 'art', 'Physics');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `todo`
+--
+
+CREATE TABLE `todo` (
+  `user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,6 +215,13 @@ CREATE TABLE `updates` (
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
   `creator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `updates`
+--
+
+INSERT INTO `updates` (`description`, `time`, `creator_id`) VALUES
+('This is new update from admin 12', '2021-03-29 10:27:48', 13);
 
 -- --------------------------------------------------------
 
@@ -146,11 +251,19 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `first_name`, `middle_name`, `last_name`, `city`, `state`, `zipcode`, `email`, `dob`, `biodata`, `password`, `user_type`, `age`) VALUES
 (8, 'Lokesh', '', 'Chikkula', 'avp', 'Tel', '506349', 'lokeshchikkula2000@gmail.com', '2019-03-03', 'IIT kharagpur', 'Kfc@7890', 'user', 2),
-(13, 'Lokesh', '', 'Chikkula', 'avp', 'Tel', '506349', 'lokeshchikkula2000@gmail.com', '2000-02-04', 'amdin', 'Kfc@7890', 'admin', 21);
+(13, 'Lokesh', '', 'Chikkula', 'avp', 'Tel', '506349', 'lokeshchikkula2000@gmail.com', '2000-02-04', 'amdin', 'Kfc@7890', 'admin', 21),
+(15, 'lokesh1', '', 'chikkula2', 'avp2', 'df2', '506349', 'lokeshchikkula2001@gmail.com', '2000-02-03', 'aflkhjda', 'Kfc@7890', 'user', 21),
+(16, 'dkf', '', 'kasdj', 'kasf', 'ka', '506349', 'a@b.gmail.com', '2019-02-01', 'daf', 'Kfc@7890', 'user', 2);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`art_id`);
 
 --
 -- Indexes for table `descq`
@@ -163,6 +276,12 @@ ALTER TABLE `descq`
 --
 ALTER TABLE `mcq`
   ADD PRIMARY KEY (`q_id`);
+
+--
+-- Indexes for table `phone`
+--
+ALTER TABLE `phone`
+  ADD PRIMARY KEY (`user_id`,`number`);
 
 --
 -- Indexes for table `updates`
@@ -181,6 +300,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `descq`
 --
 ALTER TABLE `descq`
@@ -196,7 +321,7 @@ ALTER TABLE `mcq`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

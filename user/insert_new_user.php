@@ -33,6 +33,10 @@ if (isset($_POST['user_sign_up'])) {
         echo "<script>alert('Please Enter 10 digit phoneNumber')</script>";
         exit();
     }
+    if (strlen($user_phone1) > 0 && strlen($user_phone1) != 10) {
+        echo "<script>alert('Please Enter 10 digit alternate phoneNumber')</script>";
+        exit();
+    }
     if ($user_email1 != $user_email) {
         echo "<script>alert('Email did not match')</script>";
         exit();
@@ -41,6 +45,7 @@ if (isset($_POST['user_sign_up'])) {
         echo "<script>alert('Password did not match')</script>";
         exit();
     }
+
 
     $check_email = "select * from users where email = '$user_email' and user_type != 'admin'";
     $run_check_email = mysqli_query($con, $check_email);
@@ -58,5 +63,21 @@ if (isset($_POST['user_sign_up'])) {
         echo "<script>alert('$first_name, your registration is completed')</script>";
     } else {
         echo "<script>alert('Bad Luck')</script>";
+        exit();
+    }
+
+    $select_id = "SELECT MAX(user_id) from users";
+    $query = mysqli_query($con, $select_id);
+    $row = mysqli_fetch_array($query);
+    $val = $row[0];
+
+    $insert_phone = "INSERT INTO phone (user_id, number) VALUES ('$val', '$user_phone')";
+    $query = mysqli_query($con, $insert_phone);
+
+
+    echo "<script>alert('$x, your registration is completed')</script>";
+    if (strlen($user_phone1) == 10) {
+        $insert_phone1 = "INSERT INTO phone (user_id, number) VALUES ('$val', '$user_phone1')";
+        $query = mysqli_query($con, $insert_phone1);
     }
 }

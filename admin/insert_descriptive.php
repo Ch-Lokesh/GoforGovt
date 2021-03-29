@@ -36,20 +36,6 @@
             <div class="form-group row">
                 <label for="labels" style="margin-left:10px;">Please Select Labels</label>
 
-                <!-- <input type="checkbox" name="check_list[]" value="Geography"><label>Geography</label>
-                <input type="checkbox" name="check_list[]" value="Maths"><label>Maths</label>
-                <input type="checkbox" name="check_list[]" value="Physics"><label>Physics</label>
-                <input type="checkbox" name="check_list[]" value="History"><label>History</label>
-                <input type="checkbox" name="check_list[]" value="English"><label>English</label>
-                <input type="checkbox" name="check_list[]" value="Economy"><label>Economy</label>
-                <input type="checkbox" name="check_list[]" value="Culture"><label>Culture</label>
-                <input type="checkbox" name="check_list[]" value="Current_Affairs"><label>Current_Affairs</label>
-                <input type="checkbox" name="check_list[]" value="General_Science"><label>General_Science</label>
-                <input type="checkbox" name="check_list[]" value="Literature"><label>Literature</label>
-                <input type="checkbox" name="check_list[]" value="PrevYearQuestion"><label>PrevYearQuestion</label>
-                <input type="checkbox" name="check_list[]" value="Reasoning"><label>Reasoning</label>
-                <input type="checkbox" name="check_list[]" value="Aptitude"><label>Aptitude</label> -->
-
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1"></div>
@@ -145,16 +131,12 @@
                     </div>
                 </div>
             </div>
-
-
-
             <center><button type="submit" class="btn btn-primary btn-block" name="sub_des_answer">Save Question & Answer</button></center>
         </form>
     </div>
-
-
 </body>
 
+</html>
 <?php
 include("../config/configure.php");
 
@@ -186,73 +168,6 @@ if (isset($_POST['sub_des_answer'])) {
         $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', '$selected')";
         $query = mysqli_query($con, $insert);
     }
-
-    // $abc = "<script>document.getElementByID("Geography").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Geography')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Maths").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Maths')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Physics").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Physics')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("History").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'History')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("English").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'English')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Economy").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Economy')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Culture").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Culture')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Current_Affairs").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Current_Affairs')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("General_Science").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'General_Science')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Literature").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Literature')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("PrevYearQuestion").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'PrevYearQuestion')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Reasoning").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Reasoning')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-    // $abc = "<script>document.getElementByID("Aptitude").value</script>";
-    // if ($abc == 1) {
-    //     $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'descq', 'Aptitude')";
-    //     $query = mysqli_query($con, $insert);
-    // }
-
 }
 
 ?>
