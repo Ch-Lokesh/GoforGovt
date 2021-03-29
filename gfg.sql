@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2021 at 04:08 PM
+-- Generation Time: Mar 29, 2021 at 08:14 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -40,7 +40,9 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`art_id`, `header`, `content`, `time`, `creator_id`) VALUES
-(1, 'New article header', 'New article content', '2021-03-29 10:51:59', 13);
+(2, 'Must Do Coding Questions for Product Based Companies', 'As the placement season is back, GeeksforGeeks is here to help you crack the interview. We have selected some most commonly asked and MUST DO practice problems to crack Product-based Company Interviews.\r\n\r\nYou can also take part in our mock placement contests which will help you learn different topics and practice at the same time, simulating the feeling of a real placement test environment.\r\n\r\nMust-Do-Coding-Questions-for-Product-Based-Companies\r\n\r\nIf you are looking for Old MUST DO list, please refer MUST DO Coding Problems for Companies like Amazon, Microsoft, Adobe, &hellip;\r\n\r\nIn case you are a new user, we strongly recommend you to go through the below Improved list.\r\n\r\nNote: Now you can track your progress of these questions Must Do Interview Preparation ', '2021-03-29 14:45:56', 13),
+(3, 'Socket Programming in C/C++', 'What is socket programming?\r\nSocket programming is a way of connecting two nodes on a network to communicate with each other. One socket(node) listens on a particular port at an IP, while other socket reaches out to the other to form a connection. Server forms the listener socket while client reaches out to the server.\r\n\r\nState diagram for server and client model\r\nSocket Programming in C-C++\r\n\r\nStages for server\r\n\r\n    Socket creation:\r\n\r\n    int sockfd = socket(domain, type, protocol)\r\n\r\n    sockfd: socket descriptor, an integer (like a file-handle)\r\n    domain: integer, communication domain e.g., AF_INET (IPv4 protocol) , AF_INET6 (IPv6 protocol)\r\n    type: communication type\r\n    SOCK_STREAM: TCP(reliable, connection oriented)\r\n    SOCK_DGRAM: UDP(unreliable, connectionless)\r\n    protocol: Protocol value for Internet Protocol(IP), which is 0. This is the same number which appears on protocol field in the IP header of a packet.(man protocols for more details)\r\n    Setsockopt:\r\n\r\n    int setsockopt(int sockfd, int level, int optname,  \r\n                       const void *optval, socklen_t optlen);\r\n\r\n    This helps in manipulating options for the socket referred by the file descriptor sockfd. This is completely optional, but it helps in reuse of address and port. Prevents error such as: &ldquo;address already in use&rdquo;.\r\n    Bind:\r\n\r\n    int bind(int sockfd, const struct sockaddr *addr, \r\n                              socklen_t addrlen);\r\n\r\n    After creation of the socket, bind function binds the socket to the address and port number specified in addr(custom data structure). In the example code, we bind the server to the localhost, hence we use INADDR_ANY to specify the IP address.\r\n    Listen:\r\n\r\n    int listen(int sockfd, int backlog);\r\n\r\n    It puts the server socket in a passive mode, where it waits for the client to approach the server to make a connection. The backlog, defines the maximum length to which the queue of pending connections for sockfd may grow. If a connection request arrives when the queue is full, the client may receive an error with an indication of ECONNREFUSED.', '2021-03-29 15:11:10', 13),
+(4, 'How to prepare for Govt Exams', 'Like every year, as of February - March, the season of exams begins -- be it Secondary School, Higher Secondary, CAT, CET, JEE, government exams or any other competitive exams. This year that&rsquo;s not the case.\r\n\r\nMost of the exams have been cancelled or postponed due to the unforeseeable Coronavirus pandemic that has the entire world in its grip. Therefore, the period from May to June is crucial for students and candidates chasing success.\r\n\r\nThere are typically two distinct types of students and candidates: The perfect student/candidate who starts preparation well in advance so as to achieve the desired score and the last minute risers who start late and yet aim to achieve the same perfect score as the early birds.\r\n\r\nGenerally speaking, the average duration of starting exam preparation is said to be at least 4 to 5 months before the exam.\r\n\r\n    A survey suggests that the average number of years spent in competitive exam preparation is 3 years and 3 months. However, one can cut this time with the right approach.\r\n\r\nWith the right ingredients, anyone can cook the perfect recipe for success in the exam!\r\n\r\nPatience and perseverance in the current grim situation can help students focus on their syllabus better. The pandemic is bound to discourage students and fill them with plenty of doubts but they have to realize that this has also offered them extra time for preparation.\r\n\r\nLooking on the brighter side of every situation will help them rise better. While it\'s important to begin preparation well in advance if you are a late riser the suggestions below will help you to gain speed and come at par with the early birds.', '2021-03-29 17:08:16', 13);
 
 -- --------------------------------------------------------
 
@@ -55,6 +57,15 @@ CREATE TABLE `comments` (
   `type` varchar(20) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`user_id`, `comment`, `comment_on`, `type`, `time`) VALUES
+(13, 'comment by lokesh', 4, 'art', '2021-03-29 17:55:29'),
+(8, 'Another comment by Lokesh', 4, 'art', '2021-03-29 18:13:22'),
+(8, 'Checking comment', 4, 'art', '2021-03-29 18:14:23');
 
 -- --------------------------------------------------------
 
@@ -190,7 +201,20 @@ INSERT INTO `tags` (`q_id`, `q_type`, `tag`) VALUES
 (13, 'mcq', 'Aptitude'),
 (1, 'art', 'Geography'),
 (1, 'art', 'Maths'),
-(1, 'art', 'Physics');
+(1, 'art', 'Physics'),
+(2, 'art', 'Geography'),
+(2, 'art', 'Maths'),
+(2, 'art', 'Physics'),
+(2, 'art', 'English'),
+(3, 'art', 'General_Science'),
+(3, 'art', 'Literature'),
+(3, 'art', 'PrevYearQuestion'),
+(3, 'art', 'Reasoning'),
+(3, 'art', 'Aptitude'),
+(4, 'art', 'General_Science'),
+(4, 'art', 'Literature'),
+(4, 'art', 'PrevYearQuestion'),
+(4, 'art', 'Reasoning');
 
 -- --------------------------------------------------------
 
@@ -221,7 +245,10 @@ CREATE TABLE `updates` (
 --
 
 INSERT INTO `updates` (`description`, `time`, `creator_id`) VALUES
-('This is new update from admin 12', '2021-03-29 10:27:48', 13);
+('A third update from Lokesh', '2021-03-29 17:04:25', 13),
+('Fourth update from admin', '2021-03-29 17:04:34', 13),
+('This is new update from admin 12', '2021-03-29 10:27:48', 13),
+('Yet Another update from lokesh (2)', '2021-03-29 17:04:14', 13);
 
 -- --------------------------------------------------------
 
@@ -303,7 +330,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `descq`
