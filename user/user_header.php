@@ -20,7 +20,7 @@ include("../config/configure.php");
                 $user = $_SESSION['email'];
 
 
-                $get_user = "select * from users where email = '$user' and user_type = 'user'";
+                $get_user = "select * from users where email = '$user' and user_type != 'admin'";
                 $run_user = mysqli_query($con, $get_user);
                 if (!$run_user) {
                     echo ("<script>alert('Something went wrong!')</script>");
