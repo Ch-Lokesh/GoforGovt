@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2021 at 08:14 PM
+-- Generation Time: Mar 30, 2021 at 07:10 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -65,7 +65,9 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`user_id`, `comment`, `comment_on`, `type`, `time`) VALUES
 (13, 'comment by lokesh', 4, 'art', '2021-03-29 17:55:29'),
 (8, 'Another comment by Lokesh', 4, 'art', '2021-03-29 18:13:22'),
-(8, 'Checking comment', 4, 'art', '2021-03-29 18:14:23');
+(8, 'Checking comment', 4, 'art', '2021-03-29 18:14:23'),
+(8, 'comment on socket program by user', 3, 'art', '2021-03-30 03:49:05'),
+(8, 'Another comment on socket program', 3, 'art', '2021-03-30 03:49:18');
 
 -- --------------------------------------------------------
 
@@ -97,9 +99,26 @@ CREATE TABLE `descq` (
 --
 
 INSERT INTO `descq` (`q_id`, `question`, `answer`, `creator_id`) VALUES
-(4, 'daf', 'dfa', 13),
-(5, 'goegraph question', 'goegraphy answer', 13),
-(6, 'All tags question', 'All tags Answer', 13);
+(9, 'creating new descriptive question', 'Answer to the descritptive quesion', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `done`
+--
+
+CREATE TABLE `done` (
+  `user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `done`
+--
+
+INSERT INTO `done` (`user_id`, `id`, `type`) VALUES
+(8, 4, 'art');
 
 -- --------------------------------------------------------
 
@@ -114,6 +133,13 @@ CREATE TABLE `feedback` (
   `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`fb_id`, `user_id`, `feedback`, `time`) VALUES
+(0, 8, 'This is a feed back', '2021-03-29 18:50:34');
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +151,13 @@ CREATE TABLE `liked` (
   `id` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `liked`
+--
+
+INSERT INTO `liked` (`user_id`, `id`, `type`) VALUES
+(8, 4, 'art');
 
 -- --------------------------------------------------------
 
@@ -160,7 +193,10 @@ INSERT INTO `mcq` (`q_id`, `question`, `option_1`, `option_2`, `option_3`, `opti
 (10, '1', '1', '1', '1', '1', 1, 13),
 (11, '1', '1', '1', '1', '1', 1, 13),
 (12, 'mcq Question', 'option 1', 'option 2', 'option 3', 'option 4', 2, 13),
-(13, 'Is True = True', 'True', 'False', '', '', 1, 13);
+(13, 'Is True = True', 'True', 'False', '', '', 1, 13),
+(14, 'True of False from user', 'True', 'False', '', '', 1, 8),
+(15, 'As you can see, online businesses are becoming more and more concerned about the UI of their respective websites to provide a better user experience and generate better ROI ', 'True', 'False', '', '', 1, 8),
+(16, 'As you can see, online businesses are becoming more and more concerned about the UI of their respective websites to provide a better user experience and generate better ROI ', 'True', 'False', '', '', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -214,7 +250,16 @@ INSERT INTO `tags` (`q_id`, `q_type`, `tag`) VALUES
 (4, 'art', 'General_Science'),
 (4, 'art', 'Literature'),
 (4, 'art', 'PrevYearQuestion'),
-(4, 'art', 'Reasoning');
+(4, 'art', 'Reasoning'),
+(14, 'mcq', 'Geography'),
+(14, 'mcq', 'English'),
+(9, 'descq', 'Geography'),
+(9, 'descq', 'Maths'),
+(15, 'mcq', 'Geography'),
+(15, 'mcq', 'Maths'),
+(15, 'mcq', 'Physics'),
+(16, 'tf', 'English'),
+(16, 'tf', 'Economy');
 
 -- --------------------------------------------------------
 
@@ -227,6 +272,13 @@ CREATE TABLE `todo` (
   `id` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `todo`
+--
+
+INSERT INTO `todo` (`user_id`, `id`, `type`) VALUES
+(8, 4, 'art');
 
 -- --------------------------------------------------------
 
@@ -277,8 +329,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `middle_name`, `last_name`, `city`, `state`, `zipcode`, `email`, `dob`, `biodata`, `password`, `user_type`, `age`) VALUES
-(8, 'Lokesh', '', 'Chikkula', 'avp', 'Tel', '506349', 'lokeshchikkula2000@gmail.com', '2019-03-03', 'IIT kharagpur', 'Kfc@7890', 'user', 2),
-(13, 'Lokesh', '', 'Chikkula', 'avp', 'Tel', '506349', 'lokeshchikkula2000@gmail.com', '2000-02-04', 'amdin', 'Kfc@7890', 'admin', 21),
+(8, 'Lokesh', '', 'Chikkula', 'avpally', 'Tel', '506349', 'lokeshchikkula2000@gmail.com', '2019-03-03', 'IIT kharagpur', 'Kfc@7890', 'creator', 2),
+(13, 'Lokesh', '', 'Chikkula', 'avp', 'Tel', '506349', 'lokeshchikkula2000a@gmail.com', '2000-02-04', 'amdin', 'Kfc@7890', 'admin', 21),
 (15, 'lokesh1', '', 'chikkula2', 'avp2', 'df2', '506349', 'lokeshchikkula2001@gmail.com', '2000-02-03', 'aflkhjda', 'Kfc@7890', 'user', 21),
 (16, 'dkf', '', 'kasdj', 'kasf', 'ka', '506349', 'a@b.gmail.com', '2019-02-01', 'daf', 'Kfc@7890', 'user', 2);
 
@@ -336,13 +388,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `descq`
 --
 ALTER TABLE `descq`
-  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `mcq`
 --
 ALTER TABLE `mcq`
-  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`

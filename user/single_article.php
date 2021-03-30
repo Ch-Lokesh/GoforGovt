@@ -65,18 +65,6 @@ function single_article()
         </div>
         </br>
         ";
-
-
-        // if ($_POST['done']) {
-        // }
-        // if ($_POST['like']) {
-        //     $insert = "INSERT INTO liked (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
-        //     $run_insert = mysqli_query($con, $insert);
-        // }
-        // if ($_POST['todo']) {
-        //     $insert = "INSERT INTO todo (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
-        //     $run_insert = mysqli_query($con, $insert);
-        // }
     }
 }
 
