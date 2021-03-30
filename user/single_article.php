@@ -57,16 +57,34 @@ function single_article()
                     <div class='col-sm-4'><strong>Created at</strong>  $time </div>
                 </div>
             </div>
+            
             </br>
+
+            
+            
         </div>
         </br>
         ";
+
+
+        // if ($_POST['done']) {
+        // }
+        // if ($_POST['like']) {
+        //     $insert = "INSERT INTO liked (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
+        //     $run_insert = mysqli_query($con, $insert);
+        // }
+        // if ($_POST['todo']) {
+        //     $insert = "INSERT INTO todo (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
+        //     $run_insert = mysqli_query($con, $insert);
+        // }
     }
 }
 
 function show_comments()
 {
     global $con;
+    //$art_id = $val;
+    //if ($_GET['art_id'])
     $art_id = $_GET['art_id'];
     $select = "SELECT * FROM comments WHERE comment_on = '$art_id' AND type='art' ORDER BY time DESC LIMIT 20";
     $run_select = mysqli_query($con, $select);
@@ -163,6 +181,89 @@ function show_comments()
         </div>
         <?php echo single_article(); ?>
 
+        <?php
+        $email = $_SESSION['email'];
+        $current_user = "SELECT * from users WHERE email='$email'";
+        $run_current_user = mysqli_query($con, $current_user);
+        $rows_current_user = mysqli_fetch_array($run_current_user);
+        $current_user_id = $rows_current_user['user_id'];
+        $art_id = $_GET['art_id'];
+        ?>
+
+        <div class="container-fluid" style="margin-bottom:15px;">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <form action='' method='post'>
+                        <form action="" method="post" enctype="multipart/form" role="form" class="form-horizontal">
+                            <button type="submit" class="btn btn-primary btn-block" name="done">Done</button>
+                        </form>
+                        <?php
+                        if (isset($_POST['done'])) {
+                            $select = "SELECT * from done WHERE user_id='$current_user_id' AND id='$art_id' AND type='art'";
+                            $query = mysqli_query($con, $select);
+                            $rows = mysqli_num_rows($query);
+                            if ($rows > 0) {
+                                $delete = "DELETE FROM done WHERE user_id='$current_user_id' AND id='$art_id' AND type='art'";
+                                $run_delete = mysqli_query($con, $delete);
+                                echo "<script>alert('Made undone')</script>";
+                            } else {
+                                $insert = "INSERT INTO done (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
+                                $run_insert = mysqli_query($con, $insert);
+                                echo "<script>alert('Marked as completed')</script>";
+                            }
+                        }
+                        ?>
+                    </form>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <form action="" method="post" enctype="multipart/form" role="form" class="form-horizontal">
+                        <button type="submit" class="btn btn-primary btn-block" name="liked">Like</button>
+                    </form>
+                    <?php
+                    if (isset($_POST['liked'])) {
+
+                        $select = "SELECT * from liked WHERE user_id='$current_user_id' AND id='$art_id' AND type='art'";
+                        $query = mysqli_query($con, $select);
+                        $rows = mysqli_num_rows($query);
+                        if ($rows > 0) {
+                            $delete = "DELETE FROM liked WHERE user_id='$current_user_id' AND id='$art_id' AND type='art'";
+                            $run_delete = mysqli_query($con, $delete);
+                            echo "<script>alert('Like Removed')</script>";
+                        } else {
+                            $insert = "INSERT INTO liked (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
+                            $run_insert = mysqli_query($con, $insert);
+                            echo "<script>alert('Like Added')</script>";
+                        }
+                    }
+                    ?>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <form action="" method="post" enctype="multipart/form" role="form" class="form-horizontal">
+                        <button type="submit" class="btn btn-primary btn-block" name="todo">Todo</button>
+                    </form>
+                    <?php
+                    if (isset($_POST['todo'])) {
+                        $select = "SELECT * from todo WHERE user_id='$current_user_id' AND id='$art_id' AND type='art'";
+                        $query = mysqli_query($con, $select);
+                        $rows = mysqli_num_rows($query);
+
+                        if ($rows > 0) {
+                            $delete = "DELETE FROM todo WHERE user_id='$current_user_id' AND id='$art_id' AND type='art'";
+                            $run_delete = mysqli_query($con, $delete);
+                            echo "<script>alert('Todo Removed')</script>";
+                        } else {
+                            $insert = "INSERT INTO todo (user_id, id, type) VALUES ('$current_user_id', '$art_id', 'art')";
+                            $run_insert = mysqli_query($con, $insert);
+                            echo "<script>alert('Todo Added')</script>";
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
 
 
         <form action="" method="post" class='form-inline'>
@@ -182,10 +283,10 @@ function show_comments()
 
             if (isset($_POST['sub_cmt'])) {
                 $email = $_SESSION['email'];
-                $select_user = "SELECT * FROM users WHERE email = '$email' and user_type = 'user'";
+                $select_user = "SELECT * FROM users WHERE email = '$email' and user_type != 'admin'";
                 $run_user = mysqli_query($con, $select_user);
-                $row = mysqli_fetch_array($run_user);
-                $user_id = $row['user_id'];
+                $row_user = mysqli_fetch_array($run_user);
+                $user_id = $row_user['user_id'];
                 $art_id = $_GET['art_id'];
 
                 $comment = $_POST['cmt'];
@@ -198,6 +299,7 @@ function show_comments()
             }
             ?>
         </form>
+
 
         <div class="container-fluid">
             <div class="row">

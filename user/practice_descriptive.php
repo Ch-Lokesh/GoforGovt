@@ -164,7 +164,7 @@ include("user_header.php")
 
                     $select = "SELECT *
                                    FROM descq, tags
-                                   WHERE descq.q_id = tags.q_id AND q_type='descq'";
+                                   WHERE descq.q_id = tags.q_id AND q_type='descq' AND tag='$selected'";
                     $run_select = mysqli_query($con, $select);
 
 
