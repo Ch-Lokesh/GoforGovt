@@ -206,7 +206,7 @@ if (isset($_POST['sub_mcq_answer'])) {
     $q_id = $row[0];
 
     foreach ($_POST['check_list'] as $selected) {
-        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'mcq', '$selected' )";
+        $insert = "INSERT INTO tags (q_id, q_type, tag) VALUES ('$q_id', 'tf', '$selected' )";
         $query = mysqli_query($con, $insert);
     }
 }

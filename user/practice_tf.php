@@ -163,7 +163,7 @@ include("user_header.php")
 
                     $select = "SELECT *
                                    FROM mcq, tags
-                                   WHERE mcq.q_id = tags.q_id AND q_type='mcq'";
+                                   WHERE mcq.q_id = tags.q_id AND q_type='tf'";
                     $run_select = mysqli_query($con, $select);
 
 
@@ -176,7 +176,7 @@ include("user_header.php")
                         $answer = $row['answer'];
                         $user_id = $row['creator_id'];
 
-                        if (strlen($option_3) == 0) {
+                        if (strlen($option_3) > 0) {
                             continue;
                         }
 
@@ -198,12 +198,6 @@ include("user_header.php")
                                             <div class='col-sm-3'>Option 1 : $option_1</div>
                                             <div class='col-sm-1'></div>
                                             <div class='col-sm-3'>Option 2 : $option_2</div>
-                                        </div>
-                                        <div class='row'>
-                                            <div class='col-sm-2'></div>
-                                            <div class='col-sm-3'>Option 3 : $option_3</div>
-                                            <div class='col-sm-1'></div>
-                                            <div class='col-sm-3'>Option 4 : $option_4</div>
                                         </div>
                                     </div>
                                 </div>

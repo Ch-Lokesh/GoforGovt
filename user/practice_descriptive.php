@@ -17,6 +17,37 @@ include("user_header.php")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<style>
+    .ques {
+        background-color: lightgrey;
+        max-width: 70%;
+        margin: auto;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 20px;
+    }
+
+    .options {
+        background-color: lightgrey;
+        max-width: 70%;
+        margin: auto;
+        padding: 5px;
+
+        border-radius: 20px;
+    }
+
+    #answer {
+        background-color: lightgreen;
+        max-width: 70%;
+        margin: auto;
+        padding: 5px;
+
+        border-radius: 20px;
+        margin-bottom: 10px;
+        ;
+    }
+</style>
+
 <body>
     <div class="container-fulid">
         <div class="row">
@@ -127,13 +158,15 @@ include("user_header.php")
         <div class="row">
             <?php
             if (isset($_POST['filters'])) {
+                $ques = array();
+                $counter = 1;
                 foreach ($_POST['check_list'] as $selected) {
 
                     $select = "SELECT *
                                    FROM descq, tags
                                    WHERE descq.q_id = tags.q_id AND q_type='descq'";
                     $run_select = mysqli_query($con, $select);
-                    $ques = array();
+
 
                     while ($row = mysqli_fetch_array($run_select)) {
                         $question = $row['question'];
@@ -142,10 +175,10 @@ include("user_header.php")
                         if (!in_array($row['q_id'], $ques, TRUE)) {
 
                             echo "
-                                <div class='row'>
+                                <div class='row ques'>
                                     <div class='col-sm-1'></div>
                                     <div class='col-sm-8'>
-                                        <strong>$question</strong>
+                                        <strong>$counter ) $question</strong>
                                     </div>
                                     <div class='col-sm-3'></div>
                                 </div>
@@ -162,6 +195,7 @@ include("user_header.php")
                             ";
 
                             array_push($ques, $row['q_id']);
+                            $counter = $counter + 1;
                         }
                     }
                 }
