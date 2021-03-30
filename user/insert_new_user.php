@@ -75,7 +75,6 @@ if (isset($_POST['user_sign_up'])) {
     $query = mysqli_query($con, $insert_phone);
 
 
-    echo "<script>alert('$x, your registration is completed')</script>";
     if (strlen($user_phone1) == 10) {
         $insert_phone1 = "INSERT INTO phone (user_id, number) VALUES ('$val', '$user_phone1')";
         $query = mysqli_query($con, $insert_phone1);

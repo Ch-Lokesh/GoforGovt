@@ -2,7 +2,7 @@
 <html>
 <?php session_start();
 include('../config/configure.php');
-include("admin_header.php");
+include("user_header.php");
 ?>
 
 <head>
@@ -21,16 +21,14 @@ include("admin_header.php");
 
 <?php
 
+$user_id = $_GET['user_id'];
 
 function show_liked()
 {
     global $con, $user_id;
     $select = "SELECT * 
-                FROM liked, articles
-                GROUP BY id 
-                ORDER BY count(id) DESC
-                ";
-
+                FROM done , articles
+                WHERE done.user_id='$user_id' and done.type='art' and articles.art_id=done.id";
     $run_select = mysqli_query($con, $select);
 
     while ($row_posts = mysqli_fetch_array($run_select)) {
@@ -85,7 +83,7 @@ function show_liked()
     <div class="container">
         <div class="row">
             <center>
-                <h2>Articles Bookmarked by you</h2>
+                <h2>Articles Read by you</h2>
             </center>
         </div>
         <div class="row">

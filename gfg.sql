@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2021 at 07:10 AM
+-- Generation Time: Mar 30, 2021 at 11:48 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -129,7 +129,7 @@ INSERT INTO `done` (`user_id`, `id`, `type`) VALUES
 CREATE TABLE `feedback` (
   `fb_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `feedback` text NOT NULL,
+  `feed` text NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -137,7 +137,7 @@ CREATE TABLE `feedback` (
 -- Dumping data for table `feedback`
 --
 
-INSERT INTO `feedback` (`fb_id`, `user_id`, `feedback`, `time`) VALUES
+INSERT INTO `feedback` (`fb_id`, `user_id`, `feed`, `time`) VALUES
 (0, 8, 'This is a feed back', '2021-03-29 18:50:34');
 
 -- --------------------------------------------------------
@@ -157,7 +157,14 @@ CREATE TABLE `liked` (
 --
 
 INSERT INTO `liked` (`user_id`, `id`, `type`) VALUES
-(8, 4, 'art');
+(8, 4, 'art'),
+(1, 4, 'art'),
+(2, 4, 'art'),
+(3, 4, 'art'),
+(4, 4, 'art'),
+(5, 4, 'art'),
+(6, 4, 'art'),
+(7, 3, 'art');
 
 -- --------------------------------------------------------
 

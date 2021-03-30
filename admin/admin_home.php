@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
-<?php session_start(); ?>
+<?php session_start();
+include("admin_header.php") ?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Registration</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
     <link rel="stylesheet" type="text/css" href="../styles/user_reg.css">
 
@@ -25,6 +30,7 @@
 
         .card {
             box-shadow: 10px 10px 5px grey;
+            background-color: inherit;
         }
 
         .card:hover {
@@ -103,46 +109,15 @@
                 </div>
             </div>
 
-            <div class="card col-sm-3 text-center margin" id="liked_art">
+            <div class="card col-sm-3 text-center margin" id="feed">
                 <div class="card-header">
-                    Check Most Liked Articles
+                    Check Feedback from users
                 </div>
                 <div class="card-body">
-                    <p>Contains list of most liked articles by users</p>
+                    <p>Contains recent feedback from users</p>
                 </div>
             </div>
 
-        </div>
-
-        <div class="row center row_margin">
-
-            <div class="card col-sm-3 text-center first" id="liked_qes">
-                <div class="card-header">
-                    Check Most Liked Questions
-                </div>
-                <div class="card-body">
-                    <p>Contains list of most liked questions by users</p>
-                </div>
-            </div>
-
-            <div class="card col-sm-3 text-center margin" id="comp_qes">
-                <div class="card-header">
-                    Check Most Completed Questions
-                </div>
-                <div class="card-body">
-                    <p>Contains list of most completed questions by users</p>
-                </div>
-            </div>
-
-            <div class="card col-sm-3 text-center margin" id="comp_art">
-                <div class="card-header">
-                    Check Most Completed Articles
-                </div>
-                <div class="card-body">
-                    <p>Check Most Completed Articles</p>
-                </div>
-            </div>
-            <div class="col-sm-1"></div>
         </div>
     </div>
 
@@ -165,14 +140,11 @@
         document.getElementById("liked_art").onclick = function() {
             location.href = "show_mliked_articles.php";
         }
-        document.getElementById("liked_qes").onclick = function() {
-            location.href = "show_mliked_questions.php";
-        }
-        document.getElementById("comp_qes").onclick = function() {
-            location.href = "show_mcompleted_questions.php";
-        }
         document.getElementById("comp_art").onclick = function() {
-            location.href = "show_mcompleted_articles.php"
+            location.href = "show_mcompleted_articles.php";
+        }
+        document.getElementById("feed").onclick = function() {
+            location.href = "show_feedback.php";
         }
     </script>
 </body>

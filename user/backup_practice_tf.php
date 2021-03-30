@@ -159,72 +159,11 @@ include("user_header.php")
             if (isset($_POST['filters'])) {
                 $ques = array();
                 $counter = 1;
-                if(!empty($_POST['check_list'])){ 
                 foreach ($_POST['check_list'] as $selected) {
 
                     $select = "SELECT *
                                    FROM mcq, tags
                                    WHERE mcq.q_id = tags.q_id AND q_type='tf' AND tag='$selected'";
-                    $run_select = mysqli_query($con, $select);
-
-
-                    while ($row = mysqli_fetch_array($run_select)) {
-                        $question = $row['question'];
-                        $option_1 = $row['option_1'];
-                        $option_2 = $row['option_2'];
-                        $option_3 = $row['option_3'];
-                        $option_4 = $row['option_4'];
-                        $answer = $row['answer'];
-                        $user_id = $row['creator_id'];
-
-                        if (strlen($option_3) > 0) {
-                            continue;
-                        }
-
-                        if (!in_array($row['q_id'], $ques, TRUE)) {
-
-                            echo "
-                                <div class='row ques'>
-                                    <div class='col-sm-1'></div>
-                                    <div class='col-sm-8'>
-                                        <strong>$counter ) $question</strong>
-                                    </div>
-                                    <div class='col-sm-3'></div>
-                                </div>
-                                <br>
-                                 <div class='row options'>
-                                    <div class='container-fluid'>
-                                        <div class='row'>
-                                            <div class='col-sm-2'></div>
-                                            <div class='col-sm-3'>Option 1 : $option_1</div>
-                                            <div class='col-sm-1'></div>
-                                            <div class='col-sm-3'>Option 2 : $option_2</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                
-                                <div class='row' id='answer'>
-                                    <div class='col-sm-3'></div>
-                                    <div class='col-sm-6'>
-                                      Answer :  $answer
-                                    </div>
-                                    <div class='col-sm-3'></div>
-                                </div>
-                                
-                            ";
-
-                            array_push($ques, $row['q_id']);
-                            $counter = $counter + 1;
-                        }
-                    }
-                }
-                }
-                else
-                {
-                    $select = "SELECT *
-                                   FROM mcq, tags
-                                   WHERE mcq.q_id = tags.q_id AND q_type='tf'";
                     $run_select = mysqli_query($con, $select);
 
 

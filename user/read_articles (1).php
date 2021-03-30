@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <?php session_start();
-include("user_header.php")
+include("user_header.php");
+//include("functions.php");
 ?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Articles</title>
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
     <link rel="stylesheet" type="text/css" href="../styles/insert_descriptive.css">
+    <link rel="stylesheet" type="text/css" href="../styles/articles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -44,7 +46,33 @@ include("user_header.php")
 
         border-radius: 20px;
         margin-bottom: 10px;
+        ;
     }
+
+    <style>body {
+        background-image: url('../images/MegaTron.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+
+    .comment {
+        border: 2px solid gray;
+        border-radius: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .des {
+        font-size: 18px;
+    }
+
+    .article {
+        max-width: 80%;
+        margin: auto;
+    }
+</style>
 </style>
 
 <body>
@@ -53,7 +81,7 @@ include("user_header.php")
             <form action="" method="post" enctype="multipart/form" role="form" class="form-horizontal">
 
                 <div class="form-group row">
-                    <label for="labels" style="margin-left:10px;">Please Select One Filter</label>
+                    <label for="labels" style="margin-left:10px;">Please Select Filter</label>
 
                     <div class="container-fluid">
                         <div class="row">
@@ -163,58 +191,61 @@ include("user_header.php")
                 foreach ($_POST['check_list'] as $selected) {
 
                     $select = "SELECT *
-                                   FROM mcq, tags
-                                   WHERE mcq.q_id = tags.q_id AND q_type='tf' AND tag='$selected'";
+                                   FROM articles, tags
+                                   WHERE articles.art_id = tags.q_id AND tags.q_type='art' AND tag='$selected'";
                     $run_select = mysqli_query($con, $select);
 
 
                     while ($row = mysqli_fetch_array($run_select)) {
-                        $question = $row['question'];
-                        $option_1 = $row['option_1'];
-                        $option_2 = $row['option_2'];
-                        $option_3 = $row['option_3'];
-                        $option_4 = $row['option_4'];
-                        $answer = $row['answer'];
-                        $user_id = $row['creator_id'];
+                        $header = $row['header'];
+                        $content = $row['content'];
+                        $content = substr($content, 0, 400);
+                        $time = $row['time'];
+                        $creator = $row['creator_id'];
+                        $art_id = $row['art_id'];
 
-                        if (strlen($option_3) > 0) {
-                            continue;
-                        }
+                        $select_creator = "SELECT * FROM users where user_id='$creator'";
+                        $run_creator = mysqli_query($con, $select_creator);
+                        $user_row = mysqli_fetch_array($run_creator);
+                        $first_name = $user_row['first_name'];
 
-                        if (!in_array($row['q_id'], $ques, TRUE)) {
+
+                        if (!in_array($row['art_id'], $ques, TRUE)) {
 
                             echo "
-                                <div class='row ques'>
-                                    <div class='col-sm-1'></div>
-                                    <div class='col-sm-8'>
-                                        <strong>$counter ) $question</strong>
-                                    </div>
-                                    <div class='col-sm-3'></div>
-                                </div>
-                                <br>
-                                 <div class='row options'>
-                                    <div class='container-fluid'>
+                                <div class='container-fluid'>
+                                    <div class='article'>
                                         <div class='row'>
-                                            <div class='col-sm-2'></div>
-                                            <div class='col-sm-3'>Option 1 : $option_1</div>
-                                            <div class='col-sm-1'></div>
-                                            <div class='col-sm-3'>Option 2 : $option_2</div>
+                                            <div class='col-sm-12'>
+                                                <center><h2>$header</h2></center>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <br>
-                                
-                                <div class='row' id='answer'>
-                                    <div class='col-sm-3'></div>
-                                    <div class='col-sm-6'>
-                                      Answer :  $answer
-                                    </div>
-                                    <div class='col-sm-3'></div>
-                                </div>
-                                
-                            ";
+                                        <hr id='hl' > 
+                                        
+                                        <div class='row content'>
+                                            <div class='col-sm-2'>
+                                            </div>
+                                            <div class='col-sm-8'>
+                                                $content
+                                            </div>  
+                                            <div class='col-sm-2'>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class='row time'>
+                                            <div class='col-sm-4'></div>
+                                            <div class='col-sm-4'><strong>Created by</strong>  $first_name</div>
+                                            <div class='col-sm-1'></div>
+                                            <div class='col-sm-4'><strong>Created at</strong>  $time </div>
+                                        </div>
 
-                            array_push($ques, $row['q_id']);
+                                        <center><a href='single_article.php?art_id=$art_id'><button class='btn btn-info'>See More</button></a></center>
+                                    </div>
+                                    </br>
+                                </div>
+                                </br>
+                                ";
+                            array_push($ques, $row['art_id']);
                             $counter = $counter + 1;
                         }
                     }
@@ -223,66 +254,78 @@ include("user_header.php")
                 else
                 {
                     $select = "SELECT *
-                                   FROM mcq, tags
-                                   WHERE mcq.q_id = tags.q_id AND q_type='tf'";
+                                   FROM articles, tags
+                                   WHERE articles.art_id = tags.q_id AND tags.q_type='art'";
                     $run_select = mysqli_query($con, $select);
 
 
                     while ($row = mysqli_fetch_array($run_select)) {
-                        $question = $row['question'];
-                        $option_1 = $row['option_1'];
-                        $option_2 = $row['option_2'];
-                        $option_3 = $row['option_3'];
-                        $option_4 = $row['option_4'];
-                        $answer = $row['answer'];
-                        $user_id = $row['creator_id'];
+                        $header = $row['header'];
+                        $content = $row['content'];
+                        $content = substr($content, 0, 400);
+                        $time = $row['time'];
+                        $creator = $row['creator_id'];
+                        $art_id = $row['art_id'];
 
-                        if (strlen($option_3) > 0) {
-                            continue;
-                        }
+                        $select_creator = "SELECT * FROM users where user_id='$creator'";
+                        $run_creator = mysqli_query($con, $select_creator);
+                        $user_row = mysqli_fetch_array($run_creator);
+                        $first_name = $user_row['first_name'];
 
-                        if (!in_array($row['q_id'], $ques, TRUE)) {
+
+                        if (!in_array($row['art_id'], $ques, TRUE)) {
 
                             echo "
-                                <div class='row ques'>
-                                    <div class='col-sm-1'></div>
-                                    <div class='col-sm-8'>
-                                        <strong>$counter ) $question</strong>
-                                    </div>
-                                    <div class='col-sm-3'></div>
-                                </div>
-                                <br>
-                                 <div class='row options'>
-                                    <div class='container-fluid'>
+                                <div class='container-fluid'>
+                                    <div class='article'>
                                         <div class='row'>
-                                            <div class='col-sm-2'></div>
-                                            <div class='col-sm-3'>Option 1 : $option_1</div>
-                                            <div class='col-sm-1'></div>
-                                            <div class='col-sm-3'>Option 2 : $option_2</div>
+                                            <div class='col-sm-12'>
+                                                <center><h2>$header</h2></center>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <br>
-                                
-                                <div class='row' id='answer'>
-                                    <div class='col-sm-3'></div>
-                                    <div class='col-sm-6'>
-                                      Answer :  $answer
-                                    </div>
-                                    <div class='col-sm-3'></div>
-                                </div>
-                                
-                            ";
+                                        <hr id='hl' > 
+                                        
+                                        <div class='row content'>
+                                            <div class='col-sm-2'>
+                                            </div>
+                                            <div class='col-sm-8'>
+                                                $content
+                                            </div>  
+                                            <div class='col-sm-2'>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class='row time'>
+                                            <div class='col-sm-4'></div>
+                                            <div class='col-sm-4'><strong>Created by</strong>  $first_name</div>
+                                            <div class='col-sm-1'></div>
+                                            <div class='col-sm-4'><strong>Created at</strong>  $time </div>
+                                        </div>
 
-                            array_push($ques, $row['q_id']);
+                                        <center><a href='single_article.php?art_id=$art_id'><button class='btn btn-info'>See More</button></a></center>
+                                    </div>
+                                    </br>
+                                </div>
+                                </br>
+                                ";
+                            array_push($ques, $row['art_id']);
                             $counter = $counter + 1;
                         }
                     }
                 }
             }
             ?>
+            <!-- </div>
+        <div class="container-fluid">
+            <div class="row">
+                <center>
+                    <h2>Comments on Article</h2>
+                </center>
+            </div>
+            <br>
+            <?php show_comments(); ?>
+        </div> -->
         </div>
-    </div>
 
 
 

@@ -34,10 +34,10 @@ include("../config/configure.php");
 
                 <li><a href='user_profile.php?<?php echo ("user_id=$user_id") ?>'><?php echo ("$first_name"); ?></a></li>
                 <li><a href='user_home.php'>Home</a></li>
-                <li><a href='test.php?<?php echo ("user_id=$user_id") ?>'>Take Test</a></li>
                 <li><a href='user_contribute.php?<?php echo ("user_id=$user_id") ?>'>Contribute</a></li>
                 <li><a href='user_prof_update.php?<?php echo ("user_id=$user_id") ?>'>Update Profile</a></li>
                 <li><a href='practice.php?<?php echo ("user_id=$user_id") ?>'>Practice</a></li>
+                <li><a href='logout.php?<?php echo ("user_id=$user_id") ?>'>Logout </a></li>
                 <!-- <li><a href='messeges_info.php?<?php echo ("stu_id=$user_id") ?>'>Messages &nbsp;<span class='badge badge-secondary'><?php echo ($num_msgs); ?></span></a></li> -->
                 <li><a href="feedback.php">Give Feedback</a></li>
             </ul>

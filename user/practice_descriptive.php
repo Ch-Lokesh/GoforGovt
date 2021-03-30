@@ -160,11 +160,50 @@ include("user_header.php")
             if (isset($_POST['filters'])) {
                 $ques = array();
                 $counter = 1;
-                foreach ($_POST['check_list'] as $selected) {
+                if (!empty($_POST['check_list'])) {
+                    foreach ($_POST['check_list'] as $selected) {
 
+                        $select = "SELECT *
+                                    FROM descq, tags
+                                    WHERE descq.q_id = tags.q_id AND q_type='descq' AND tag='$selected'";
+                        $run_select = mysqli_query($con, $select);
+
+
+                        while ($row = mysqli_fetch_array($run_select)) {
+                            $question = $row['question'];
+                            $answer = $row['answer'];
+                            $user_id = $row['creator_id'];
+                            if (!in_array($row['q_id'], $ques, TRUE)) {
+
+                                echo "
+                                    <div class='row ques'>
+                                        <div class='col-sm-1'></div>
+                                        <div class='col-sm-8'>
+                                            <strong>$counter ) $question</strong>
+                                        </div>
+                                        <div class='col-sm-3'></div>
+                                    </div>
+                                    <br>
+                                    
+                                    <div class='row' id='answer'>
+                                        <div class='col-sm-1'></div>
+                                        <div class='col-sm-8'>
+                                            $answer
+                                        </div>
+                                        <div class='col-sm-3'></div>
+                                    </div>
+                                    
+                                ";
+
+                                array_push($ques, $row['q_id']);
+                                $counter = $counter + 1;
+                            }
+                        }
+                    }
+                } else {
                     $select = "SELECT *
                                    FROM descq, tags
-                                   WHERE descq.q_id = tags.q_id AND q_type='descq' AND tag='$selected'";
+                                   WHERE descq.q_id = tags.q_id AND q_type='descq'";
                     $run_select = mysqli_query($con, $select);
 
 
